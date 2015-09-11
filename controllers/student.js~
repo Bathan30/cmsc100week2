@@ -1,6 +1,7 @@
 var db = require(__dirname + '/../lib/mysql'); //imported mysql
 	
 	exports.find = function(req, res, next){
+		console.log(req.ip + "find()");
 		db.query('SELECT * FROM student',
 			function(err,rows){
 				if(err) return next(err)
@@ -9,6 +10,7 @@ var db = require(__dirname + '/../lib/mysql'); //imported mysql
 	};
 	
 	exports.find1 = function(req, res, next){
+		console.log(req.ip + "find1()");
 		db.query('SELECT * FROM student WHERE studno=?',
 			[req.params.id],
 			function(err,rows){
@@ -46,4 +48,3 @@ var db = require(__dirname + '/../lib/mysql'); //imported mysql
 				res.send(rows);
 		});
 	};
-		
