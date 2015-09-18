@@ -1,4 +1,5 @@
 	var request = require('supertest'), should = require('should-http');
+
 	describe('student', function(){
 		var url ='localhost:5000';
 		describe('find()', function(){
@@ -25,13 +26,21 @@
 				});	
 			});
 		});
+		
 		describe('insert()', function(){
 			it('should return a newly created record', function(done){
 				request(url)
 				.post('/students')
-				.send({'studno': '2015-12345' , 'name':'Marie', 'bdate':'1997-11-12'})
+				.send({'studno': '2010-12345' , 'name':'Miggy', 'bdate':'1996-12-12'})
 				.end(function(err, res){
 					if(err) throw err;
+						var should = require('should');
+						('studno').should.be.type('string');
+						('studno' == '2010-12345').should.be.ok;
+						('name').should.be.type('string');
+						('name' == 'Miggy').should.be.ok;
+						('bdate').should.be.type('string');
+						('bdate' == '1996-12-12').should.be.ok;
 					res.should.have.status(200); 
 					res.body.should.be.an.instanceOf(Object);
 					done();
