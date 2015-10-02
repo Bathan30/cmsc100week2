@@ -26,3 +26,4 @@ cd		res.send('Get a student'); })
 app.use(require('body-parser') ()); //can accept payloads or can get data
 app.use(require('method-override') ());	//let's put and delete method applicable or useful
 app.use(require(__dirname + '/config/router') (express.Router())); //__dirname is where the file being executedcd
+app.use(express.static(__dirname+ '/public' ));
